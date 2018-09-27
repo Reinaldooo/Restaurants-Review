@@ -162,7 +162,15 @@ nav h1 a {
   display: flex;
   flex-flow: column wrap;
   border-radius: .5rem;
+  position: relative;
 }
+
+#restaurants-list li:hover > .restaurannts-list-button {
+  background-color: rgba(238, 238, 238, 0.5);
+  border-bottom: 3px solid #F44336;
+  animation: attention 1s ease-in infinite;
+}
+
 #restaurants-list .restaurant-img {
   background-color: #ccc;
   display: block;
@@ -257,7 +265,7 @@ nav h1 a {
 }
 #restaurant-address {
   font-size: 12pt;
-  margin: 10px 0px;
+  margin: 10px 60px;
 }
 #restaurant-cuisine {
   background-color: #333;
@@ -321,4 +329,20 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
+}
+
+#restaurant-hours {
+  margin-left: 60px;
+}
+
+@-webkit-keyframes attention {
+  0% {
+    transform: scale(1) 
+  }
+  50% {
+    transform: scale(1.1) 
+  }
+  100% {
+    transform: scale(1) 
+  }
 }

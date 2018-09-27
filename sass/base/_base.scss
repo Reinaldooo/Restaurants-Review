@@ -1,0 +1,429 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // This defines what 1rem is
+    font-size: 62.5%; // @media screen and (max-width: 1366px) {
+    //     font-size: 55%;
+    // }
+    // @media screen and (max-width: 1280px) {
+    //     font-size: 52%;
+    // }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+    font-family: 'Open Sans', sans-serif;
+    background-color: $Cinza-Claro;
+}
+
+@keyframes inLeft {
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+.header {
+    height: 98vh;
+    position: relative;
+    overflow: hidden;
+    &__esquerda {
+        border-right: 3rem $Cinza-Claro solid;
+        overflow: hidden;
+        width: 70%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        margin-top: 10rem;
+        margin-left: -20%;
+        transform: skew(-15deg);
+        &--background {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url("../images/esquerda.jpg");
+            background-size: cover;
+            background-position: 0 -30px;
+            transform: skew(15deg);
+            margin-left: 20%;
+        }
+    }
+    &__direita {
+        width: 60%;
+        height: 100%;
+        position: absolute;
+        background-image: url("../images/direita.jpg");
+        background-size: cover;
+        background-position: 4.5rem -40px;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        margin-top: 10rem;
+        border-left: 3rem $Cinza-Claro solid;
+        @media screen and (max-width: 1850px) {
+            background-position: 4rem 0;
+        }
+        @media screen and (max-width: 1650px) {
+            background-position: 2rem 0;
+        }
+        @media screen and (max-width: 1500px) {
+            background-position: 2rem 0;
+        }
+    }
+    &__text--left {
+        position: absolute;
+        padding: 1rem 2rem 3rem;
+        top: 38%;
+        right: 50.5%;
+        text-align: center;
+        text-shadow: 0 1.3rem 5rem rgba(0, 0, 0, .5);
+        font-size: 3rem;
+        color: white;
+        z-index: 7;
+    }
+    &__text--right {
+        position: absolute;
+        padding: 1rem 2rem 3rem;
+        top: 45%;
+        left: 52.6%;
+        text-align: center;
+        text-shadow: 0 1.3rem 5rem rgba(0, 0, 0, .5);
+        font-size: 3rem;
+        color: $Cinza-Sensum;
+        z-index: 8;
+    }
+    &__description {
+        position: absolute;
+        height: 20%;
+        width: 40%;
+        background-color: $Cinza-Claro;
+        bottom: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 6;
+        text-align: justify;
+        &--h1 {
+            margin: 2.3rem 3rem;
+            font-weight: 400;
+            @media screen and (max-width: 1280px) {
+                margin: 1.5rem 2.7rem;
+            }
+            &:after {
+                content: "";
+                display: block;
+                margin: 2rem auto 0;
+                width: 30%;
+                opacity: .6;
+                background-color: $Cinza-Sensum;
+                height: .8rem;
+            }
+        }
+        @media screen and (max-width: 1850px) {}
+        @media screen and (max-width: 1400px) {
+            width: 60%;
+        }
+    }
+    @media screen and (max-width: 1400px) {
+        height: 96vh;
+    }
+    @media screen and (max-width: 1280px) {
+        height: 96vh;
+    }
+}
+
+.logo {
+    position: absolute;
+    height: 7rem;
+    left: 0;
+    top: 0;
+    z-index: 4;
+}
+
+.navigation {
+    position: absolute;
+    top: 1.7rem;
+    right: 1rem;
+    font-size: 2rem;
+    z-index: 5;
+    &__item {
+        list-style: none;
+        text-decoration: none;
+        display: inline-block; // text-transform: uppercase;
+        font-weight: 600;
+        transition: all .1s;
+        backface-visibility: hidden;
+        &:not(:last-child) {
+            margin-right: 2rem
+        }
+        &:active,
+        &:hover,
+        &:focus {
+            text-shadow: 0 1rem 5rem rgba(0, 0, 0, .3);
+            outline: none;
+            transform: translateY(-2px);
+        }
+    }
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            transition: all .1s;
+            color: $Cinza-Sensum;
+        }
+    }
+}
+
+.section-name {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $Cinza-Sensum;
+    font-size: 4rem;
+    &--clients {
+        color: $Cinza-Sensum;
+        font-size: 4rem;
+    }
+}
+
+.section-design {
+    @include sectionBasic;
+    &__left {
+        position: relative;
+        flex: 1;
+        margin-right: 1rem;
+        &--img {
+            height: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-50%) translateX(-60%);
+            transition: all .8s;
+            &.animated {
+                opacity: 1;
+                transform: translateY(-50%) translateX(-50%)
+            }
+        }
+    }
+    &__right {
+        flex: 1;
+        position: relative;
+        &--p {
+            position: absolute;
+            width: 80%;
+            font-size: 2rem;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-50%) translateX(-34%);
+            transition: all .8s;
+            &.animated {
+                opacity: 1;
+                transform: translateY(-50%) translateX(-55%);
+            }
+        }
+    }
+}
+
+.section-print {
+    @include sectionBasic;
+    background-color: $Cinza-Claro-2;
+    &__left {
+        position: relative;
+        flex: 1;
+        margin-right: 1rem;
+        &--img {
+            width: 65%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-50%) translateX(-40%);
+            transition: all .8s;
+            &.animated {
+                opacity: 1;
+            }
+        }
+    }
+    &__right {
+        flex: 1;
+        position: relative;
+        &--p {
+            position: absolute;
+            width: 80%;
+            font-size: 2rem;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-50%) translateX(-55%);
+            transition: all .8s;
+            &.animated {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.section-rent {
+    @include sectionBasic;
+    &__left {
+        position: relative;
+        flex: 1;
+        margin-right: 1rem;
+        &--img {
+            width: 70%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-50%) translateX(-60%);
+            transition: all .8s;
+            &.animated {
+                opacity: 1;
+                transform: translateY(-50%) translateX(-50%)
+            }
+        }
+    }
+    &__right {
+        flex: 1;
+        position: relative;
+        &--p {
+            position: absolute;
+            width: 80%;
+            font-size: 2rem;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-50%) translateX(-34%);
+            transition: all .8s;
+            &.animated {
+                opacity: 1;
+                transform: translateY(-50%) translateX(-55%);
+            }
+        }
+    }
+}
+
+.section-logistics {
+    @include sectionBasic;
+    background-color: $Cinza-Claro-2;
+    margin-top: 1rem;
+    &__left {
+        position: relative;
+        flex: 1;
+        margin-right: 1rem;
+        &--img {
+            width: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-55%) translateX(-40%);
+            transition: all .8s;
+            &.animated {
+                opacity: 1;
+            }
+        }
+    }
+    &__right {
+        flex: 1;
+        position: relative;
+        &--p {
+            position: absolute;
+            width: 80%;
+            font-size: 2rem;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-50%) translateX(-55%);
+            transition: all .8s;
+            &.animated {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.section-clients {
+    position: relative;
+    height: 60rem;
+    width: 60%;
+    margin: 12rem auto 0;
+    text-align: center;
+    color: $Cinza-Sensum;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: all 1s;
+    &.animated {
+        opacity: 1;
+    }
+    &--h1 {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+    }
+    &-logos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 5rem auto;
+        width: 85%;
+        height: 60%;
+        &-wrapper {
+            width: 33%;
+            height: 60%;
+            &--img {
+                height: 80%;
+            }
+        }
+    }
+}
+
+.footer {
+    height: 20rem;
+    margin-bottom: -3rem;
+    display: flex;
+    justify-content: center;
+    &-logo {
+        height: 20rem;
+        flex: 1;
+        background-color: $Cinza-Claro;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &--img {
+            height: 80%;
+        }
+    }
+    &-contato {
+        padding: 2rem 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 5;
+        background-color: $Cinza-Claro-2;
+        &--telefone {
+            color: $Cinza-Sensum;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        &--email {
+            color: $Cinza-Sensum;
+            font-size: 1.5rem;
+        }
+        &--endereço {
+            color: $Cinza-Sensum;
+            font-size: 1.5rem;
+        }
+    }
+}

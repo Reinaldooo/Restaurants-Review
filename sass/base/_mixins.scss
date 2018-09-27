@@ -1,0 +1,12 @@
+@mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin sectionBasic {
+    position: relative;
+    height: 50rem;
+    display: flex;
+    margin: 0 auto 5rem;
+}
