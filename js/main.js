@@ -118,8 +118,15 @@ updateRestaurants = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      resetRestaurants(restaurants);
-      fillRestaurantsHTML();
+      if(restaurants.length < 5) {
+        // document.getElementById("restaurants-list").style.justifyContent = "flex-start"; 
+        resetRestaurants(restaurants);
+        fillRestaurantsHTML();
+      } else {
+        // document.getElementById("restaurants-list").style.justifyContent = "space-between";
+        resetRestaurants(restaurants);
+        fillRestaurantsHTML();
+      }
     }
   })
 }
@@ -158,10 +165,14 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
+  const imageLink = document.createElement('a');
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  li.append(image);
+  imageLink.append(image);
+  imageLink.href = DBHelper.urlForRestaurant(restaurant);
+  console.log(imageLink);
+  li.append(imageLink)
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
@@ -176,7 +187,8 @@ createRestaurantHTML = (restaurant) => {
   li.append(address);
 
   const more = document.createElement('a');
-  more.innerHTML = 'View Details';
+  more.innerHTML = 'Details';
+  more.className = "restaurannts-list-button";
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
 
