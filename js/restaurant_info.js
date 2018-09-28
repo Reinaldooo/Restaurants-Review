@@ -157,6 +157,7 @@ createReviewHTML = (review) => {
   li.appendChild(date);
 
   const rating = document.createElement('p');
+  rating.style.color = "#E57373";
   rating.innerHTML = `Rating: ${review.rating}`;
   li.appendChild(rating);
 

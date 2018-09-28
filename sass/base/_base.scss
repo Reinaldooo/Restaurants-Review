@@ -8,14 +8,13 @@ html {
 
 body,td,th,p{
 	font-family: 'Poppins', sans-serif;
-	font-size: 10pt;
+	font-size: 1.5rem;
 	color: #333;
 	line-height: 1.5;
 }
 body {
   margin: 0;
   position:relative;
-  width: 100vw;
 
 }
 ul, li {
@@ -51,7 +50,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-  background-color: #FAFAFA;
+  background-color: white;
   width: 100%;
   
   // @include respond(s1200) {
@@ -149,7 +148,7 @@ nav h1 a {
 .filter-options {
   width: 100%;
   height: 8rem;
-  background-color: #FAFAFA;
+  background-color: white;
   align-items: center;
   display: flex;
   flex-flow: row wrap;
@@ -173,7 +172,7 @@ nav h1 a {
   };
 }
 .filter-options select {
-  background-color: #FAFAFA;
+  background-color: white;
   border: 2px solid $red;
   font-family: 'Poppins', sans-serif;;
   font-size: 11pt;
@@ -202,7 +201,7 @@ nav h1 a {
 }
 #restaurants-list li {
   background-color: #fff;
-  border: 1px solid $light-red;
+  border: 2px solid $light-red;
   font-family: 'Poppins', sans-serif;;
   margin: 15px 15px;
   min-height: 380px;
@@ -240,7 +239,7 @@ nav h1 a {
   width: 100%;
   border-bottom: 3px solid transparent;
   overflow: hidden;
-  transition: all 1s;
+  transition: all .2s;
   border-radius: .3rem;
   @include respond(s600) {
     max-width: 120%;
@@ -342,11 +341,15 @@ nav h1 a {
   align-self: center;
 }
 #restaurant-img {
-	width: 100%;
+  width: 100%;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+
 }
 #restaurant-address {
   font-size: 12pt;
   margin: 10px 60px;
+  color: $red;
 }
 #restaurant-cuisine {
   background-color: #333;
@@ -380,11 +383,11 @@ nav h1 a {
   flex-flow: column wrap;
   box-sizing: border-box;
   border-top: 1px solid #fff;
-  padding: 150px 40px 65px;
+  padding: 0px 40px 65px;
   width: 50%;
   @include respond(s1200) {
     width: 100%;
-    padding: 0px 40px 65px;
+    padding: 0px 40px 20px;
   }; 
 }
 #reviews-container h2 {

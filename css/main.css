@@ -4,14 +4,13 @@ html {
 
 body, td, th, p {
   font-family: 'Poppins', sans-serif;
-  font-size: 10pt;
+  font-size: 1.5rem;
   color: #333;
   line-height: 1.5; }
 
 body {
   margin: 0;
-  position: relative;
-  width: 100vw; }
+  position: relative; }
 
 ul, li {
   font-family: 'Poppins', sans-serif;
@@ -50,7 +49,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #FAFAFA;
+  background-color: white;
   width: 100%; }
   @media only screen and (max-width: 600px) {
     #maincontent {
@@ -144,7 +143,7 @@ nav h1 a {
 .filter-options {
   width: 100%;
   height: 8rem;
-  background-color: #FAFAFA;
+  background-color: white;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -180,7 +179,7 @@ nav h1 a {
       font-size: 2rem; } }
 
 .filter-options select {
-  background-color: #FAFAFA;
+  background-color: white;
   border: 2px solid #E57373;
   font-family: 'Poppins', sans-serif;
   font-size: 11pt;
@@ -215,7 +214,7 @@ nav h1 a {
 
 #restaurants-list li {
   background-color: #fff;
-  border: 1px solid #FFEBEE;
+  border: 2px solid #FFEBEE;
   font-family: 'Poppins', sans-serif;
   margin: 15px 15px;
   min-height: 380px;
@@ -257,8 +256,8 @@ nav h1 a {
   width: 100%;
   border-bottom: 3px solid transparent;
   overflow: hidden;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition: all .2s;
+  transition: all .2s;
   border-radius: .3rem; }
   @media only screen and (max-width: 600px) {
     #restaurants-list .restaurant-img {
@@ -357,11 +356,14 @@ nav h1 a {
       align-self: center; }
 
 #restaurant-img {
-  width: 100%; }
+  width: 100%;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem; }
 
 #restaurant-address {
   font-size: 12pt;
-  margin: 10px 60px; }
+  margin: 10px 60px;
+  color: #E57373; }
 
 #restaurant-cuisine {
   background-color: #333;
@@ -404,12 +406,12 @@ nav h1 a {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-top: 1px solid #fff;
-  padding: 150px 40px 65px;
+  padding: 0px 40px 65px;
   width: 50%; }
   @media only screen and (max-width: 1200px) {
     #reviews-container {
       width: 100%;
-      padding: 0px 40px 65px; } }
+      padding: 0px 40px 20px; } }
 
 #reviews-container h2 {
   background-color: #333;
