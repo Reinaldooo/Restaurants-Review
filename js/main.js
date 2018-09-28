@@ -171,7 +171,6 @@ createRestaurantHTML = (restaurant) => {
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   imageLink.append(image);
   imageLink.href = DBHelper.urlForRestaurant(restaurant);
-  console.log(imageLink);
   li.append(imageLink)
 
   const name = document.createElement('h1');
@@ -188,7 +187,7 @@ createRestaurantHTML = (restaurant) => {
 
   const more = document.createElement('a');
   more.innerHTML = 'Details';
-  more.className = "restaurannts-list-button";
+  more.className = "restaurants-list-button";
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
 

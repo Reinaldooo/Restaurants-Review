@@ -10,3 +10,15 @@
     display: flex;
     margin: 0 auto 5rem;
 }
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == s600 {
+        @media only screen and (max-width: 600px) { @content };    //600px
+    }
+    @if $breakpoint == s900 {
+        @media only screen and (max-width: 900px) { @content };     //900px
+    }
+    @if $breakpoint == s1200 {
+        @media only screen and (max-width: 1200px) { @content };    //1200px
+    }
+}
