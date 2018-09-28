@@ -118,15 +118,9 @@ updateRestaurants = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      if(restaurants.length < 5) {
-        // document.getElementById("restaurants-list").style.justifyContent = "flex-start"; 
-        resetRestaurants(restaurants);
-        fillRestaurantsHTML();
-      } else {
-        // document.getElementById("restaurants-list").style.justifyContent = "space-between";
-        resetRestaurants(restaurants);
-        fillRestaurantsHTML();
-      }
+      console.log(restaurants);
+      resetRestaurants(restaurants);
+      fillRestaurantsHTML();
     }
   })
 }
@@ -184,6 +178,12 @@ createRestaurantHTML = (restaurant) => {
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
   li.append(address);
+
+  const rating = document.createElement('p');
+  let average = restaurant.reviews.reduce((sum, entrie) => sum + entrie.rating, 0) / restaurant.reviews.length;
+  rating.className = "restaurants-list-rating";
+  rating.innerHTML = `Rating: ${average.toFixed(1)} / 5`;
+  li.append(rating);
 
   const more = document.createElement('a');
   more.innerHTML = 'Details';

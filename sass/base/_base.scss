@@ -7,7 +7,7 @@ html {
 }
 
 body,td,th,p{
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Poppins', sans-serif;
 	font-size: 10pt;
 	color: #333;
 	line-height: 1.5;
@@ -17,23 +17,23 @@ body {
   position:relative;
 }
 ul, li {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Poppins', sans-serif;
 	font-size: 10pt;
 	color: #333;
 }
 a {
-	color: #F44336;
+	color: white;
 	text-decoration: none;
 }
 a:hover, a:focus {
-	color: #E57373;
+	color: $light-red;
 	text-decoration: none;
 }
 a img{
 	border: none 0px #fff;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;;
   margin: 0 0 20px;
 }
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -48,6 +48,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
+  background-color: #FAFAFA;
   
   // @include respond(s1200) {
   //   background-color: red;
@@ -60,8 +61,8 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   };
 }
 #footer {
-  background-color: #212121;
-  color: #aaa;
+  background-color: $red;
+  color: white;
   font-size: 8pt;
   letter-spacing: 1px;
   padding: 25px;
@@ -72,7 +73,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 nav {
   width: 100%;
   height: 80px;
-  background-color: #212121;
+  background-color: $red;
   text-align:center;
   display: flex;
   align-content: center;
@@ -86,9 +87,9 @@ nav h1 {
 }
 nav h1 a {
   color: #fff;
-  font-size: 14pt;
-  font-weight: 200;
-  letter-spacing: 10px;
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: .8rem;
   text-transform: uppercase;
 }
 #breadcrumb {
@@ -121,21 +122,26 @@ nav h1 a {
 
 /* Add a color on mouse-over */
 #breadcrumb li a:hover {
-    color: #F44336;
+    color: $red;
 }
 /* ====================== Map ====================== */
 #map {
-  height: 30rem;
+  height: 40rem;
+  width: 100%;
 
   @include respond(s600) {
-    height: 40rem;
+    height: 30rem;
+    width: 100%;
   };
+}
+#map-container {
+  width: 100%;
 }
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   width: 100%;
-  height: 10rem;
-  background-color: #424242;
+  height: 8rem;
+  background-color: #FAFAFA;
   align-items: center;
   display: flex;
   flex-flow: row wrap;
@@ -148,7 +154,7 @@ nav h1 a {
   };
 }
 .filter-options h2 {
-  color: white;
+  color: $red;
   font-size: 2rem;
   font-weight: normal;
   line-height: 1;
@@ -159,9 +165,9 @@ nav h1 a {
   };
 }
 .filter-options select {
-  background-color: white;
-  border: 1px solid #fff;
-  font-family: Arial,sans-serif;
+  background-color: #FAFAFA;
+  border: 2px solid $red;
+  font-family: 'Poppins', sans-serif;;
   font-size: 11pt;
   height: 35px;
   letter-spacing: 0;
@@ -169,6 +175,7 @@ nav h1 a {
   padding: 0 10px;
   width: 20%;
   width: 18rem;
+  border-radius: .3rem;
 }
 
 /* ====================== Restaurant Listing ====================== */
@@ -184,23 +191,38 @@ nav h1 a {
 }
 #restaurants-list li {
   background-color: #fff;
-  border: 2px solid #E0E0E0;
-  font-family: Arial,sans-serif;
+  border: 1px solid $light-red;
+  font-family: 'Poppins', sans-serif;;
   margin: 15px 15px;
   min-height: 380px;
-  padding: 25px 30px;
   text-align: center;
   width: 15%;
   min-width: 280px;
   display: flex;
   flex-flow: column wrap;
-  border-radius: .5rem;
   position: relative;
+  overflow: hidden;
+  border-radius: .3rem;
+  @include respond(s1200) {
+    min-width: 240px;
+  };
+  @include respond(s900) {
+    min-width: 260px;
+  };
+  @include respond(s700) {
+    min-width: 220px;
+  };  
+  @include respond(s600) {
+    min-width: 280px;
+  };  
+  @include respond(s400) {
+    min-width: 220px;
+  };  
 }
 
 #restaurants-list li:hover > .restaurants-list-button {
   background-color: rgba(238, 238, 238, 0.5);
-  border-bottom: 3px solid #F44336;
+  border-bottom: 3px solid $red;
   animation: attention 1s ease-in infinite;
 }
 
@@ -209,39 +231,50 @@ nav h1 a {
   display: block;
   width: 100%;
   border-bottom: 3px solid transparent;
-  border-top-left-radius: .5rem;
-  border-top-right-radius: .5rem;
+  overflow: hidden;
+  transition: all 1s;
+  border-radius: .3rem;
   @include respond(s600) {
     max-width: 120%;
   }; 
 }
 
 #restaurants-list .restaurant-img:hover {
-  opacity: .9;
-  border-bottom: 3px solid #F44336;
+  opacity: .8;
+  border-bottom: 3px solid $red;
 }
 
 #restaurants-list li h1 {
-  color: #F44336;
-  font-family: Arial,sans-serif;
+  color: $red;
+  font-family: 'Poppins', sans-serif;;
   font-size: 14pt;
   font-weight: 200;
   letter-spacing: 0;
   line-height: 1.3;
-  margin: 20px 0 10px;
+  margin: 20px auto 10px;
   text-transform: uppercase;
+  width: 80%;
+  min-height: 5rem;
+  vertical-align: middle;
 }
+
 #restaurants-list p {
   margin: 0;
   font-size: 11pt;
 }
+
+.restaurants-list-rating {
+  color: $red;
+  margin-top: 1rem;
+}
+
 .restaurants-list-button {
   background-color: #EEEEEE;
   border-bottom: 3px solid transparent;
-  color: #F44336;
+  color: $red;
   display: inline-block;
-  font-size: 10pt;
-  margin: 15px 0 0;
+  font-size: 1.5rem;
+  margin: 2.5rem;
   padding: 8px 10px;
   width: 35%;
   text-align: center;
@@ -253,7 +286,7 @@ nav h1 a {
 
 .restaurants-list-button:hover {
   background-color: rgba(238, 238, 238, 0.5);
-  border-bottom: 3px solid #F44336;
+  border-bottom: 3px solid $red;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -282,8 +315,8 @@ nav h1 a {
   width: 100%;
 }
 #restaurant-name {
-  color: #F44336;
-  font-family: Arial,sans-serif;
+  color: $red;
+  font-family: 'Poppins', sans-serif;;
   font-size: 20pt;
   font-weight: 200;
   letter-spacing: 0;
@@ -377,7 +410,7 @@ nav h1 a {
     transform: scale(1) 
   }
   50% {
-    transform: scale(1.1) 
+    transform: scale(1.05) 
   }
   100% {
     transform: scale(1) 

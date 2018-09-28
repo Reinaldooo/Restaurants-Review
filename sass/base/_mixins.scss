@@ -21,4 +21,10 @@
     @if $breakpoint == s1200 {
         @media only screen and (max-width: 1200px) { @content };    //1200px
     }
+    @if $breakpoint == s700 {
+        @media only screen and (max-width: 700px) and (orientation: landscape) { @content };    //1200px
+    }
+    @if $breakpoint == s400 {
+        @media only screen and (max-width: 400px) { @content };    //1200px
+    }
 }
