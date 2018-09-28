@@ -15,6 +15,8 @@ body,td,th,p{
 body {
   margin: 0;
   position:relative;
+  width: 100vw;
+
 }
 ul, li {
 	font-family: 'Poppins', sans-serif;
@@ -37,7 +39,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 20px;
 }
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
+  box-sizing: border-box;
 }
 #maincontent {
   min-height: 100%;
@@ -49,6 +52,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   flex-flow: column wrap;
   justify-content: center;
   background-color: #FAFAFA;
+  width: 100%;
   
   // @include respond(s1200) {
   //   background-color: red;
@@ -68,6 +72,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   padding: 25px;
   text-align: center;
   text-transform: uppercase;
+  box-sizing: border-box;
 }
 /* ====================== Navigation ====================== */
 nav {
@@ -99,6 +104,9 @@ nav h1 a {
     font-size: 17px;
     margin: 0;
     width: calc(50% - 80px);
+    @include respond(s1200) {
+      width: 100%;
+    }; 
 }
 
 /* Display list items side by side */
@@ -173,9 +181,12 @@ nav h1 a {
   letter-spacing: 0;
   margin: 10px;
   padding: 0 10px;
-  width: 20%;
+  width: 30%;
   width: 18rem;
   border-radius: .3rem;
+  @include respond(s600) {
+    width: 70%;
+  };
 }
 
 /* ====================== Restaurant Listing ====================== */
@@ -214,9 +225,6 @@ nav h1 a {
   };  
   @include respond(s600) {
     min-width: 280px;
-  };  
-  @include respond(s400) {
-    min-width: 220px;
   };  
 }
 
@@ -297,12 +305,20 @@ nav h1 a {
   z-index: 1000;
 }
 .inside #map-container {
+  @media only screen and (min-width: 400px) {
+    background: blue none repeat scroll 0 0;
+    height: 50rem;
+    width: 100%;
+    margin: 0px 0px 66px;
+  }
+  @media only screen and (min-width: 1201px) {
   background: blue none repeat scroll 0 0;
   height: 100%;
   position: fixed;
   right: 0;
   top: 80px;
   width: 50%;
+  }
 }
 .inside #map {
   background-color: #ccc;
@@ -349,21 +365,27 @@ nav h1 a {
   display: flex;
   flex-flow: column;
   box-sizing: border-box;
-}
-
-#restaurant-container, #reviews-container {
   border-top: 1px solid #fff;
   padding: 150px 40px 30px;
   width: 50%;
+  @include respond(s1200) {
+    width: 100%;
+  }; 
 }
 
 /* ====================== Reviews Details ====================== */
 
 #reviews-container {
-  padding: 30px 40px 80px;
   display: flex;
   flex-flow: column wrap;
   box-sizing: border-box;
+  border-top: 1px solid #fff;
+  padding: 150px 40px 65px;
+  width: 50%;
+  @include respond(s1200) {
+    width: 100%;
+    padding: 0px 40px 65px;
+  }; 
 }
 #reviews-container h2 {
   background-color: #333;
