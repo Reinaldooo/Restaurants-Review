@@ -9,7 +9,7 @@ class DBHelper {
    */
   static get DATABASE_URL() {
     const port = 8080 // Change this to your server port
-    return `https://reinaldooo.github.io/mws-restaurant-stage-1/data/restaurants.json`;
+    return `https://reinaldooo.github.io/Restaurant-Review/data/restaurants.json`;
   }
 
   /**
@@ -162,7 +162,8 @@ class DBHelper {
       {
         title: restaurant.name,
         alt: restaurant.name,
-        url: DBHelper.urlForRestaurant(restaurant)
+        url: DBHelper.urlForRestaurant(restaurant),
+        keyboard: false
       })
     marker.addTo(newMap);
     return marker;

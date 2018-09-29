@@ -41,6 +41,21 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   display: block;
   box-sizing: border-box;
 }
+label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+.skip-link {
+position: absolute;
+top: -200px;
+}
 #maincontent {
   min-height: 100%;
   display: -webkit-box;
@@ -147,7 +162,7 @@ nav h1 a {
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   width: 100%;
-  height: 8rem;
+  height: 10rem;
   background-color: white;
   align-items: center;
   display: flex;
@@ -191,8 +206,8 @@ nav h1 a {
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
   list-style: outside none none;
-  margin: 0;
-  padding: 2rem 0;
+  margin-top: -1.7rem;
+  padding: 0 0 2rem;
   text-align: center;
   display: flex;
   flex-flow: row wrap;
@@ -227,11 +242,9 @@ nav h1 a {
   };  
 }
 
-#restaurants-list li:hover > .restaurants-list-button {
-  background-color: rgba(238, 238, 238, 0.5);
-  border-bottom: 3px solid $red;
-  animation: attention 1s ease-in infinite;
-}
+// #restaurants-list li:hover > .restaurants-list-button {
+//   animation: backColorChange 1s ease-in infinite;
+// }
 
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -277,7 +290,7 @@ nav h1 a {
 
 .restaurants-list-button {
   background-color: #EEEEEE;
-  border-bottom: 3px solid transparent;
+  border-bottom: 3px solid $red;
   color: $red;
   display: inline-block;
   font-size: 1.5rem;
@@ -291,9 +304,10 @@ nav h1 a {
   border-radius: .5rem;
 }
 
-.restaurants-list-button:hover {
-  background-color: rgba(238, 238, 238, 0.5);
+.restaurants-list-button:hover, .restaurants-list-button:focus {
+  background-color: $red;
   border-bottom: 3px solid $red;
+  color: white;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -304,6 +318,10 @@ nav h1 a {
   z-index: 1000;
 }
 .inside #map-container {
+  background: blue none repeat scroll 0 0;
+    height: 40rem;
+    width: 100%;
+    margin: 0px 0px 66px;
   @media only screen and (min-width: 400px) {
     background: blue none repeat scroll 0 0;
     height: 50rem;
@@ -339,6 +357,10 @@ nav h1 a {
   text-transform: uppercase;
   line-height: 1.1;
   align-self: center;
+  @include respond(s600) {
+    margin: 160px 0 30px;
+  }; 
+  
 }
 #restaurant-img {
   width: 100%;
@@ -350,6 +372,9 @@ nav h1 a {
   font-size: 12pt;
   margin: 10px 60px;
   color: $red;
+  @include respond(s600) {
+    margin: 10px auto;
+  };
 }
 #restaurant-cuisine {
   background-color: #333;
@@ -374,6 +399,10 @@ nav h1 a {
   @include respond(s1200) {
     width: 100%;
   }; 
+  @include respond(s600) {
+    width: 100%;
+    padding: 0px 0px 20px;
+  }; 
 }
 
 /* ====================== Reviews Details ====================== */
@@ -389,6 +418,10 @@ nav h1 a {
     width: 100%;
     padding: 0px 40px 20px;
   }; 
+  @include respond(s600) {
+    width: 100%;
+    padding: 0px 0px 20px;
+  }; 
 }
 #reviews-container h2 {
   background-color: #333;
@@ -400,15 +433,19 @@ nav h1 a {
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-	width: 100%;
+  width: 100%;
+  // @include respond(s600) {
+  //   padding: 30px 22px 20px;
+  //   box-sizing: border-box;
+  // }; 
 }
 #reviews-list {
   margin: 0;
-  padding: 0;
+  padding: 0;  
 }
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+    border: 2px solid $light-red;
   display: block;
   list-style-type: none;
   margin: 0 auto 30px;
@@ -416,6 +453,10 @@ nav h1 a {
   padding: 30px 30px 20px;
   position: relative;
   width: 85%;
+  @include respond(s600) {
+    padding: 30px 22px 20px;
+    box-sizing: border-box;
+  };
 }
 #reviews-list li p {
   margin: 0 0 10px;
@@ -426,18 +467,23 @@ nav h1 a {
 
 #restaurant-hours {
   margin-left: 60px;
+    @include respond(s600) {
+      margin: 0 auto;
+      padding: 0 20px;
+      vertical-align: middle;
+    };
 }
 
 /* ====================== Animations ====================== */
 
-@keyframes attention {
-  0% {
-    transform: scale(1) 
-  }
-  50% {
-    transform: scale(1.05) 
-  }
-  100% {
-    transform: scale(1) 
-  }
-}
+// @keyframes backColorChange {
+//   0% {
+//     background-color: #EEEEEE;
+//   }
+//   50% {
+//     background-color: $light-red;
+//   }
+//   100% {
+//     background-color: #EEEEEE;
+//   }
+// }

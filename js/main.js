@@ -75,7 +75,8 @@ initMap = () => {
   self.newMap = L.map('map', {
         center: [40.722216, -73.987501],
         zoom: 12,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
+        keyboard: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoicmVpbmFsZG9vbyIsImEiOiJjam05OHBhdzIwYXU3M3JubjN6a2M1MzBnIn0.UcT0LDTdIL75Jk6kZx3r9Q',
@@ -85,7 +86,6 @@ initMap = () => {
       'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
-
   updateRestaurants();
 }
 /* window.initMap = () => {
@@ -158,16 +158,15 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
-  const imageLink = document.createElement('a');
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  imageLink.append(image);
-  imageLink.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(imageLink)
+  image.alt = `Photo of ${restaurant.name} restaurant`
+  li.append(image)
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
+  name.setAttribute('aria-label', `Restaurant's name is ${restaurant.name}`);
   li.append(name);
 
   const neighborhood = document.createElement('p');
@@ -185,9 +184,10 @@ createRestaurantHTML = (restaurant) => {
   li.append(rating);
 
   const more = document.createElement('a');
-  more.innerHTML = 'Details';
+  more.innerHTML = 'View Details';
   more.className = "restaurants-list-button";
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.setAttribute('aria-label', `View details of ${restaurant.name} restaurant`);
   li.append(more)
 
   return li
