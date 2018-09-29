@@ -112,12 +112,12 @@ nav h1 a {
   text-transform: uppercase;
 }
 #breadcrumb {
-    padding: 10px 40px 16px;
+    padding: 5px 40px 7px;
     background-color: #424242;
     list-style: none;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
+    width: 100%;
     @include respond(s1200) {
       width: 100%;
     }; 
@@ -216,6 +216,7 @@ nav h1 a {
 }
 #restaurants-list li {
   background-color: #fff;
+  box-shadow: 0 0 15px $light-red;
   border: 2px solid $light-red;
   font-family: 'Poppins', sans-serif;;
   margin: 15px 15px;
@@ -227,7 +228,8 @@ nav h1 a {
   flex-flow: column wrap;
   position: relative;
   overflow: hidden;
-  border-radius: .3rem;
+  border-radius: .6rem;
+  transition: all .3s;
   @include respond(s1200) {
     min-width: 240px;
   };
@@ -242,9 +244,10 @@ nav h1 a {
   };  
 }
 
-// #restaurants-list li:hover > .restaurants-list-button {
-//   animation: backColorChange 1s ease-in infinite;
-// }
+#restaurants-list li:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px $darker-light-red;
+}
 
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -253,14 +256,14 @@ nav h1 a {
   border-bottom: 3px solid transparent;
   overflow: hidden;
   transition: all .2s;
-  border-radius: .3rem;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
   @include respond(s600) {
     max-width: 120%;
   }; 
 }
 
 #restaurants-list .restaurant-img:hover {
-  opacity: .8;
   border-bottom: 3px solid $red;
 }
 
@@ -297,6 +300,7 @@ nav h1 a {
   margin: 2.5rem;
   padding: 8px 10px;
   width: 35%;
+  min-width: 100px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -320,8 +324,8 @@ nav h1 a {
 .inside #map-container {
   background: blue none repeat scroll 0 0;
     height: 40rem;
-    width: 100%;
-    margin: 0px 0px 66px;
+    width: 85%;
+    margin: 0px auto 80px;
   @media only screen and (min-width: 400px) {
     background: blue none repeat scroll 0 0;
     height: 50rem;
@@ -330,11 +334,11 @@ nav h1 a {
   }
   @media only screen and (min-width: 1201px) {
   background: blue none repeat scroll 0 0;
-  height: 100%;
+  height: 90%;
   position: fixed;
   right: 0;
-  top: 80px;
-  width: 50%;
+  top: 117px;
+  width:50%;
   }
 }
 .inside #map {
@@ -356,21 +360,23 @@ nav h1 a {
   margin: 15px 0 30px;
   text-transform: uppercase;
   line-height: 1.1;
-  align-self: center;
   @include respond(s600) {
     margin: 160px 0 30px;
+    padding: 0 20px;
   }; 
   
 }
 #restaurant-img {
   width: 100%;
-  border-top-left-radius: .5rem;
-  border-top-right-radius: .5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  @include respond(s600) {
+    border-radius: 0;
+  }; 
 
 }
 #restaurant-address {
   font-size: 12pt;
-  margin: 10px 60px;
+  margin: 10px 42px;
   color: $red;
   @include respond(s600) {
     margin: 10px auto;
@@ -378,6 +384,7 @@ nav h1 a {
 }
 #restaurant-cuisine {
   background-color: #333;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   color: #ddd;
   font-size: 12pt;
   font-weight: 300;
@@ -394,14 +401,16 @@ nav h1 a {
   flex-flow: column;
   box-sizing: border-box;
   border-top: 1px solid #fff;
-  padding: 150px 40px 30px;
+  padding: 130px 40px 30px;
   width: 50%;
   @include respond(s1200) {
-    width: 100%;
+    width: 100%;    
   }; 
   @include respond(s600) {
     width: 100%;
     padding: 0px 0px 20px;
+    margin-top: -14px;
+    text-align: center;
   }; 
 }
 
@@ -425,6 +434,7 @@ nav h1 a {
 }
 #reviews-container h2 {
   background-color: #333;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   color: #ddd;
   font-size: 12pt;
   font-weight: 300;
@@ -466,7 +476,7 @@ nav h1 a {
 }
 
 #restaurant-hours {
-  margin-left: 60px;
+  margin-left: 40px;
     @include respond(s600) {
       margin: 0 auto;
       padding: 0 20px;
