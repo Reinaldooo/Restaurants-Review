@@ -52,9 +52,16 @@ label {
   white-space: nowrap; /* added line */
   border: 0;
 }
-.skip-link {
-position: absolute;
-top: -200px;
+.screen-reader {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
 }
 #maincontent {
   min-height: 100%;

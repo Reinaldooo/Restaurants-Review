@@ -162,25 +162,31 @@ createRestaurantHTML = (restaurant) => {
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   image.alt = `Photo of ${restaurant.name} restaurant`
+  image.setAttribute('tabindex', '0');
   li.append(image)
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
   name.setAttribute('aria-label', `Restaurant's name is ${restaurant.name}`);
+  name.setAttribute('tabindex', '0');
   li.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
+  neighborhood.setAttribute('tabindex', '0');image.setAttribute('tabindex', '0');
+  neighborhood.setAttribute('aria-label', `Neighborhood: ${restaurant.neighborhood}`);
   li.append(neighborhood);
 
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
+  address.setAttribute('tabindex', '0');
   li.append(address);
 
   const rating = document.createElement('p');
   let average = restaurant.reviews.reduce((sum, entrie) => sum + entrie.rating, 0) / restaurant.reviews.length;
   rating.className = "restaurants-list-rating";
   rating.innerHTML = `Rating: ${average.toFixed(1)} / 5`;
+  rating.setAttribute('tabindex', '0');
   li.append(rating);
 
   const more = document.createElement('a');

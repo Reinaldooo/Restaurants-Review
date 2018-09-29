@@ -19,7 +19,8 @@ initMap = () => {
       self.newMap = L.map('map', {
         center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
+        keyboard: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: 'pk.eyJ1IjoicmVpbmFsZG9vbyIsImEiOiJjam05OHBhdzIwYXU3M3JubjN6a2M1MzBnIn0.UcT0LDTdIL75Jk6kZx3r9Q',
@@ -82,16 +83,25 @@ fetchRestaurantFromURL = (callback) => {
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
+  name.setAttribute('tabindex', '0');
+  name.setAttribute('aria-label', `restaurant details`);
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
+  address.setAttribute('tabindex', '0');
+  address.setAttribute('aria-label', `Restaurant address is ${restaurant.address}`);
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.setAttribute('aria-label', `restaurant big photo`);
+  image.setAttribute('alt', `${restaurant.name} big photo`);
+  image.setAttribute('tabindex', '0');
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
+  cuisine.setAttribute('aria-label', `restaurant cousine is ${restaurant.cuisine_type}`);
+  cuisine.setAttribute('tabindex', '0');
 
   // fill operating hours
   if (restaurant.operating_hours) {
@@ -127,6 +137,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
+  title.setAttribute("tabindex", "0");
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
@@ -149,20 +160,26 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
+  name.setAttribute("tabindex", "0");
+  name.setAttribute("aria-label", `Reviewer name is ${review.name}`);
   name.innerHTML = review.name;
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
+  date.setAttribute("tabindex", "0");
+  date.setAttribute("aria-label", `Review date is ${review.date}`);
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.style.color = "#E57373";
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.setAttribute("tabindex", "0");
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.setAttribute("tabindex", "0");
   li.appendChild(comments);
 
   return li;
