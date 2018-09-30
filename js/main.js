@@ -225,3 +225,10 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+//Registering serice worker
+if ('serviceWorker' in navigator) {
+   window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js');
+  });
+};
+
