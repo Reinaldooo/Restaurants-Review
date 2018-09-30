@@ -8,23 +8,7 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 5500 // Change this to your server port
-
-    const isLocalhost = Boolean(
-      window.location.hostname === 'localhost' ||
-      // [::1] is the IPv6 localhost address.
-      window.location.hostname === '[::1]' ||
-      // 127.0.0.1/8 is considered localhost for IPv4.
-      window.location.hostname.match(
-        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-      )
-    );
-    
-    if (isLocalhost) {
-      return `http://localhost:${port}/data/restaurants.json`
-    } else {
-      return `/Restaurants-Review/data/restaurants.json`;
-    }
+    return 'https://reinaldooo.github.io/Restaurants-Review/data/restaurants.json'
   }
 
   /**
