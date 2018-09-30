@@ -1,26 +1,6 @@
 // Here the best practce is to find a way to dinamically change this name based on files content
 var staticCacheName = ('restreviews' + Date.now());
 
-const cacheAssets = [
-  "./index.html",
-  "./restaurant.html",
-  "./css/main.css",
-  "./js/dbhelper.js",
-  "./js/main.js",
-  "./js/restaurant_info.js",
-  'https://fonts.googleapis.com/css?family=Poppins',
-  'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
-  "https://reinaldooo.github.io/Restaurant-Review/data/restaurants.json"
-]
-
-self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open(staticCacheName).then(function(cache) {
-      return cache.addAll(cacheAssets);
-    })
-  );
-});
-
 self.addEventListener('activate', function(event) {
   event.waitUntil(
     //get all the caches names, filter the ones we need except the last and then delete them
