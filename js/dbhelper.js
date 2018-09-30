@@ -21,7 +21,7 @@ class DBHelper {
     if (isLocalhost) {
       return `http://localhost:${port}/data/restaurants.json`
     } else {
-      return `/data/restaurants.json`;
+      return `/Restaurants-Review/data/restaurants.json`;
     }
   }
 
