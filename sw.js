@@ -1,6 +1,7 @@
 // Here the best practce is to find a way to dinamically change this name based on files content
 var staticCacheName = ('restreviews' + Date.now());
 
+
 self.addEventListener('activate', function(event) {
   event.waitUntil(
     //get all the caches names, filter the ones we need except the last and then delete them
@@ -17,14 +18,16 @@ self.addEventListener('activate', function(event) {
   );
 });
 
+
 self.addEventListener('fetch', e => {
+  console.log('Service Worker: Fetchingg');
   e.respondWith(
     fetch(e.request)
       .then(res => {
         // Make copy/clone of response
         const resClone = res.clone();
-        // Open cache
-        caches.open(staticCacheName).then(cache => {
+        // Open cahce
+        caches.open(cacheName).then(cache => {
           // Add response to cache
           cache.put(e.request, resClone);
         });
