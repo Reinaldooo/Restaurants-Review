@@ -224,4 +224,6 @@ const isLocalhost = Boolean(
 
 if (!isLocalhost) {
   document.getElementById('breadcrumb-home').setAttribute('href', "/Restaurants-Review/")
+  document.getElementById('restaurant-top-home-link').setAttribute('href', "/Restaurants-Review/")
+  document.getElementById('restaurant-bottom-home-link').setAttribute('href', "/Restaurants-Review/")
 };
