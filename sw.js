@@ -18,13 +18,12 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', e => {
-  console.log('Service Worker: Fetching');
   e.respondWith(
     fetch(e.request)
       .then(res => {
         // Make copy/clone of response
         const resClone = res.clone();
-        // Open cahce
+        // Open cache
         caches.open(staticCacheName).then(cache => {
           // Add response to cache
           cache.put(e.request, resClone);
