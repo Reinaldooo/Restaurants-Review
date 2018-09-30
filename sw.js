@@ -1,17 +1,17 @@
 // Here the best practce is to find a way to dinamically change this name based on files content
 var staticCacheName = ('rest' + Date.now());
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event) => {
 
   event.waitUntil(
-    caches.open(staticCacheName).then(function(cache) {
+    caches.open(staticCacheName).then((cache) => {
       return cache.addAll([
         'index.html',
         'css/main.css',
         'js/dbhelper.js',
         'js/main.js',
         'js/restaurant_info.js',
-        'https://reinaldooo.github.io/Restaurants-Review/data/restaurants.json',
+        'data/restaurants.json',
         'img/1.jpg',
         'img/2.jpg',
         'img/3.jpg',
@@ -27,15 +27,15 @@ self.addEventListener('install', function(event) {
   );
 });
 
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     //get all the caches names, filter the ones we need except the last and then delete them
-    caches.keys().then(function(cacheNames) {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.filter(function(cacheName) {
+        cacheNames.filter((cacheName) => {
           return cacheName.startsWith('rest') &&
                  cacheName != staticCacheName;
-        }).map(function(cacheName) {
+        }).map((cacheName) => {
           return caches.delete(cacheName);
         })
       );
@@ -43,7 +43,7 @@ self.addEventListener('activate', function(event) {
   );
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', (event) => {
   // respond to requests for the root page with
   // the page skeleton from the cache
   
@@ -60,7 +60,7 @@ self.addEventListener('fetch', function(event) {
     }
   }
   event.respondWith(
-    caches.match(event.request).then(function(response) {
+    caches.match(event.request).then((response) => {
       return response || fetch(event.request);
     })
   );
