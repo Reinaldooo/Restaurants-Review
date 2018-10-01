@@ -204,6 +204,7 @@ registerServiceWorker = () => {
       navigator.serviceWorker.register('./sw.js');
     });
   };
+  return
 }
 /**
  * Updates the links on github pages.
