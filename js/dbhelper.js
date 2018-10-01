@@ -11,7 +11,7 @@ class DBHelper {
     if(this.isLocalhost()) {
       return `http://localhost:5500/data/restaurants.json`
     } else {
-      return `Restaurants-Review/data/restaurants.json`
+      return `data/restaurants.json`
     }
   }
 
