@@ -2,26 +2,26 @@
 var staticCacheName = ('rest' + Date.now());
 
 self.addEventListener('install', (event) => {
-
-  event.waitUntil(
+  console.log("2");
+  event.waitUntil(    
     caches.open(staticCacheName).then((cache) => {
       return cache.addAll([
-        'Restaurants-Review/index.html',
-        'Restaurants-Review/css/main.css',
-        'Restaurants-Review/js/dbhelper.js',
-        'Restaurants-Review/js/main.js',
-        'Restaurants-Review/js/restaurant_info.js',
-        'Restaurants-Review/data/restaurants.json',
-        'Restaurants-Review/img/1.jpg',
-        'Restaurants-Review/img/2.jpg',
-        'Restaurants-Review/img/3.jpg',
-        'Restaurants-Review/img/4.jpg',
-        'Restaurants-Review/img/5.jpg',
-        'Restaurants-Review/img/6.jpg',
-        'Restaurants-Review/img/7.jpg',
-        'Restaurants-Review/img/8.jpg',
-        'Restaurants-Review/img/9.jpg',
-        'Restaurants-Review/img/10.jpg'
+        'index.html',
+        'css/main.css',
+        'js/dbhelper.js',
+        'js/main.js',
+        'js/restaurant_info.js',
+        'data/restaurants.json',
+        'img/1.jpg',
+        'img/2.jpg',
+        'img/3.jpg',
+        'img/4.jpg',
+        'img/5.jpg',
+        'img/6.jpg',
+        'img/7.jpg',
+        'img/8.jpg',
+        'img/9.jpg',
+        'img/10.jpg'
       ]);
     })
   );
