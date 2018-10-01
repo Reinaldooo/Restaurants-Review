@@ -99,9 +99,6 @@ nav {
   height: 80px;
   background-color: #E57373;
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-line-pack: center;
       align-content: center; }
   @media only screen and (max-width: 600px) {
@@ -111,7 +108,12 @@ nav {
               box-sizing: border-box; } }
 
 nav h1 {
-  margin: auto; }
+  margin: auto;
+  position: relative;
+  top: 29%; }
+  @media only screen and (max-width: 400px) {
+    nav h1 {
+      top: 10%; } }
 
 nav h1 a {
   color: #fff;
@@ -125,11 +127,15 @@ nav h1 a {
   background-color: #424242;
   list-style: none;
   font-size: 17px;
-  margin: 0;
-  width: 100%; }
-  @media only screen and (max-width: 1200px) {
+  margin-top: 47px;
+  width: 100%;
+  text-align: left; }
+  @media only screen and (max-width: 600px) {
     #breadcrumb {
-      width: 100%; } }
+      margin-left: -35px; } }
+  @media only screen and (max-width: 400px) {
+    #breadcrumb {
+      margin-top: 14px; } }
 
 /* Display list items side by side */
 #breadcrumb li {
@@ -311,6 +317,10 @@ nav h1 a {
 #restaurants-list p {
   margin: 0;
   font-size: 11pt; }
+
+.restaurants-list-address {
+  min-height: 43px;
+  padding: 0 5%; }
 
 .restaurants-list-rating {
   color: #E57373;

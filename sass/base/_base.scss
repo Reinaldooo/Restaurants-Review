@@ -101,7 +101,6 @@ nav {
   height: 80px;
   background-color: $red;
   text-align:center;
-  display: flex;
   align-content: center;
   @include respond(s600) {
     padding: 0 2rem;
@@ -110,6 +109,11 @@ nav {
 }
 nav h1 {
   margin: auto;
+  position: relative;
+  top: 29%;
+  @include respond(s400) {
+    top: 10%;
+  }; 
 }
 nav h1 a {
   color: #fff;
@@ -123,10 +127,14 @@ nav h1 a {
     background-color: #424242;
     list-style: none;
     font-size: 17px;
-    margin: 0;
+    margin-top: 47px;
     width: 100%;
-    @include respond(s1200) {
-      width: 100%;
+    text-align: left;
+    @include respond(s600) {
+      margin-left: -35px;
+    }; 
+    @include respond(s400) {
+      margin-top: 14px;
     }; 
 }
 
@@ -291,6 +299,11 @@ nav h1 a {
 #restaurants-list p {
   margin: 0;
   font-size: 11pt;
+}
+
+.restaurants-list-address {
+  min-height: 43px;
+  padding: 0 5%;
 }
 
 .restaurants-list-rating {

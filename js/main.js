@@ -165,6 +165,7 @@ createRestaurantHTML = (restaurant) => {
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
   address.setAttribute('tabindex', '0');
+  address.className = "restaurants-list-address";
   li.append(address);
 
   const rating = document.createElement('p');
