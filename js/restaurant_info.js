@@ -6,6 +6,7 @@ var newMap;
  */
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap();
+  fitGitPagesLinks();
 });
 
 /**
@@ -209,4 +210,12 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+fitGitPagesLinks = () => {
+  if (!DBHelper.isLocalhost()) {
+    document.getElementById('breadcrumb-home').setAttribute('href', "/Restaurants-Review/")
+    document.getElementById('restaurant-top-home-link').setAttribute('href', "/Restaurants-Review/")
+    document.getElementById('restaurant-bottom-home-link').setAttribute('href', "/Restaurants-Review/")
+  };
 }

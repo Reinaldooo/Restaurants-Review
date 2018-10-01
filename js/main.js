@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   initMap(); // added 
   fetchNeighborhoods();
   fetchCuisines();
+  fixGitPagesLinks();
+  registerServiceWorker();
 });
 
 /**
@@ -202,8 +204,24 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 }
 
 //Registering serice worker
-if ('serviceWorker' in navigator) {
-   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('./sw.js');
-  });
-};
+registerServiceWorker = () => {
+  let local = DBHelper.isLocalhost();
+
+  if (local && 'serviceWorker' in navigator) {
+     window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./sw.js');
+    });
+  };
+  if (!local && 'serviceWorker' in navigator) {
+     window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./sw_gpages.js');
+    });
+  };
+}
+
+fixGitPagesLinks = () => {  
+  if (!DBHelper.isLocalhost()) {
+    document.getElementById('index-bottom-home-link').setAttribute('href', "/Restaurants-Review/")
+    document.getElementById('index-top-home-link').setAttribute('href', "/Restaurants-Review/")
+  };
+}
