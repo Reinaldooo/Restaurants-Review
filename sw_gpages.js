@@ -1,9 +1,9 @@
-// Here the best practce is to find a way to dinamically change this name based on files content
+//Auto change cache name to avoid conflicts
 var staticCacheName = ('rest' + Date.now());
 
 self.addEventListener('install', (event) => {
-  console.log("5");
-  event.waitUntil(    
+  event.waitUntil(
+    //open up a new cache and store the important parts    
     caches.open(staticCacheName).then((cache) => {
       return cache.addAll([
         'index.html',
@@ -34,7 +34,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.filter((cacheName) => {
           return cacheName.startsWith('rest') &&
-                 cacheName != staticCacheName;
+            cacheName != staticCacheName;
         }).map((cacheName) => {
           return caches.delete(cacheName);
         })
@@ -44,21 +44,16 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // respond to requests for the root page with
-  // the page skeleton from the cache
-  
-
-  //
-  //
-  // Study this further
   let requestUrl = new URL(event.request.url)
 
-  if(requestUrl.origin === location.origin) {
-    if(requestUrl.pathname === '/Restaurants-Reviews/') {
+  //Will serve the cached index if an offline request to the root is made
+  if (requestUrl.origin === location.origin) {
+    if (requestUrl.pathname === '/Restaurants-Reviews/') {
       event.respondWith(caches.match('index.html'))
       return
     }
   }
+  //To all the rest, check if the item is in cache, and if not, just allow the original request
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);

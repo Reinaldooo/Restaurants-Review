@@ -8,7 +8,8 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    if(this.isLocalhost()) {
+    //In case of gitpages the db url is updated
+    if (this.isLocalhost()) {
       return `http://localhost:5500/data/restaurants.json`
     } else {
       return `data/restaurants.json`

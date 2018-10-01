@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   fixGitPagesLinks();
   registerServiceWorker();
 });
-
 /**
  * Fetch all neighborhoods and set their HTML.
  */
@@ -28,7 +27,6 @@ fetchNeighborhoods = () => {
     }
   });
 }
-
 /**
  * Set neighborhoods HTML.
  */
@@ -41,7 +39,6 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
     select.append(option);
   });
 }
-
 /**
  * Fetch all cuisines and set their HTML.
  */
@@ -55,7 +52,6 @@ fetchCuisines = () => {
     }
   });
 }
-
 /**
  * Set cuisines HTML.
  */
@@ -69,17 +65,16 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
     select.append(option);
   });
 }
-
 /**
  * Initialize leaflet map, called from HTML.
  */
 initMap = () => {
   self.newMap = L.map('map', {
-        center: [40.722216, -73.987501],
-        zoom: 12,
-        scrollWheelZoom: false,
-        keyboard: false
-      });
+    center: [40.722216, -73.987501],
+    zoom: 12,
+    scrollWheelZoom: false,
+    keyboard: false
+  });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoicmVpbmFsZG9vbyIsImEiOiJjam05OHBhdzIwYXU3M3JubjN6a2M1MzBnIn0.UcT0LDTdIL75Jk6kZx3r9Q',
     maxZoom: 18,
@@ -90,7 +85,9 @@ initMap = () => {
   }).addTo(newMap);
   updateRestaurants();
 }
-
+/**
+ * Fill restaurants based on user selection
+ */
 updateRestaurants = () => {
   const cSelect = document.getElementById('cuisines-select');
   const nSelect = document.getElementById('neighborhoods-select');
@@ -110,7 +107,6 @@ updateRestaurants = () => {
     }
   })
 }
-
 /**
  * Clear current restaurants, their HTML and remove their map markers.
  */
@@ -127,7 +123,6 @@ resetRestaurants = (restaurants) => {
   self.markers = [];
   self.restaurants = restaurants;
 }
-
 /**
  * Create all restaurants HTML and add them to the webpage.
  */
@@ -138,7 +133,6 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   });
   addMarkersToMap();
 }
-
 /**
  * Create restaurant HTML.
  */
@@ -160,7 +154,7 @@ createRestaurantHTML = (restaurant) => {
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
-  neighborhood.setAttribute('tabindex', '0');image.setAttribute('tabindex', '0');
+  neighborhood.setAttribute('tabindex', '0'); image.setAttribute('tabindex', '0');
   neighborhood.setAttribute('aria-label', `Neighborhood: ${restaurant.neighborhood}`);
   li.append(neighborhood);
 
@@ -186,7 +180,6 @@ createRestaurantHTML = (restaurant) => {
 
   return li
 }
-
 /**
  * Add markers for current restaurants to the map.
  */
@@ -202,24 +195,25 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 
 }
-
 //Registering serice worker
 registerServiceWorker = () => {
   let local = DBHelper.isLocalhost();
 
   if (local && 'serviceWorker' in navigator) {
-     window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       navigator.serviceWorker.register('./sw.js');
     });
   };
   if (!local && 'serviceWorker' in navigator) {
-     window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       navigator.serviceWorker.register('./sw_gpages.js');
     });
   };
 }
-
-fixGitPagesLinks = () => {  
+/**
+ * Updates the links on github pages.
+ */
+fixGitPagesLinks = () => {
   if (!DBHelper.isLocalhost()) {
     document.getElementById('index-bottom-home-link').setAttribute('href', "/Restaurants-Review/")
     document.getElementById('index-top-home-link').setAttribute('href', "/Restaurants-Review/")
