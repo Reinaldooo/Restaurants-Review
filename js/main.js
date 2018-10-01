@@ -204,11 +204,6 @@ registerServiceWorker = () => {
       navigator.serviceWorker.register('./sw.js');
     });
   };
-  if (!local && 'serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('./sw_gpages.js');
-    });
-  };
 }
 /**
  * Updates the links on github pages.
