@@ -2,7 +2,7 @@
 var staticCacheName = ('rest' + Date.now());
 
 self.addEventListener('install', (event) => {
-  console.log("3");
+  console.log("4");
   event.waitUntil(    
     caches.open(staticCacheName).then((cache) => {
       return cache.addAll([
@@ -54,6 +54,7 @@ self.addEventListener('fetch', (event) => {
   let requestUrl = new URL(event.request.url)
 
   if(requestUrl.origin === location.origin) {
+    console.log(requestUrl.pathname);
     if(requestUrl.pathname === 'Restaurants-Reviews/') {
       event.respondWith(caches.match('index.html'))
       return
