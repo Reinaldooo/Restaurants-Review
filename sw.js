@@ -6,6 +6,7 @@ self.addEventListener('install', (event) => {
     //open up a new cache and store the important parts    
     caches.open(staticCacheName).then((cache) => {
       return cache.addAll([
+        '/',
         'index.html',
         'css/main.css',
         'js/dbhelper.js',
