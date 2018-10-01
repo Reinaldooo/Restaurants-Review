@@ -6,7 +6,6 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(staticCacheName).then((cache) => {
       return cache.addAll([
-        'Restaurants-Review/',
         'Restaurants-Review/index.html',
         'Restaurants-Review/css/main.css',
         'Restaurants-Review/js/dbhelper.js',
